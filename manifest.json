@@ -1,0 +1,49 @@
+{
+    "name": "#RestaurantWebsite",
+    "short_name": "#Restaurant",
+    "description": "Bienvenid@s a #RestaurantWebsite, una página sobre el mejor servicio de comida que hay en Argentina",
+    "background_color": "#393939",
+    "theme_color": "#048654",
+    "orientation": "portrait",
+    "display": "standalone",
+    "start_url": "./?utm_source=web_app_manifest",
+    "scope": "./",
+    "lang": "es",
+    "icons": [
+        {
+            "src": "../assets/img/icon_512.png.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "../assets/img/icon_384.png.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "../assets/img/icon_256.png.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "../assets/img/icon_192.png.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "../assets/img/icon_128.png.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "./assets/img/icon_64.png.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        },
+        {
+            "src": "./assets/img/icon_32.png.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        }
+    ]
+}
