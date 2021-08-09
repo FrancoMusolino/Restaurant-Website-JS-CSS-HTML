@@ -38,7 +38,7 @@ const addAllToCache = () => {
         .catch(err => console.log(err))
 }
 
-window.addEventListener('DOMContentLoaded', addAllToCache());
+document.addEventListener('DOMContentLoaded', addAllToCache());
 
 //una vez que se instala el SW, se activa y busca los recursos para hacer que funcione sin conexión
 self.addEventListener('activate', e => {
