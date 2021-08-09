@@ -12,36 +12,47 @@ const CACHE_NAME = 'v1_cache_restaurant_website',
         './assets/img/favicon.ico'
     ]
 
+//Se instala el Service Worker, pasa solo 1 vez
 self.addEventListener('install', e => {
     e.waitUntil(
+        //Abrime en el cacheStorage el cache con ese nombre, devuelve una promesa
         caches.open(CACHE_NAME)
             .then(cache => {
-                return caches.addAll(urlsToCache)
+                //Una vez que hayas abierto el cache con ese nombre, añadi todas estas Urls a ese cache
+                return cache.addAll(urlsToCache)
+                    //Evitamos la espera, se activo ni bien termina la instalación
                     .then(() => self.skipWaiting())
             })
             .catch(err => console.log(err))
     )
 })
 
+
+//una vez que se instala el SW, se activa y busca los recursos para hacer que funcione sin conexión
 self.addEventListener('activate', e => {
     const cacheWhitelist = [CACHE_NAME]
 
     e.waitUntil(
         caches.keys()
-            .then(cachesNames => {
+            .then(cacheNames => {
                 return Promise.all(
-                    cachesNames.map(cacheName => {
+                    cacheNames.map(cacheName => {
+                        //Eliminamos lo que ya no se necesita en cache
                         if (cacheWhitelist.indexOf(cacheName) === -1) {
                             return caches.delete(cacheName)
                         }
                     })
                 )
             })
+            // Le indica al SW activar el cache actual
             .then(() => self.clients.claim())
     )
 })
 
+
+//Cuando el navegador recupera una url
 self.addEventListener('fetch', e => {
+    //Responder ya sea con el objeto en caché o continuar y buscar la url real
     e.respondWith(
         caches.match(e.request)
             .then(res => {
