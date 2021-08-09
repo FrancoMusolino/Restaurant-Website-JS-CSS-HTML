@@ -51,16 +51,16 @@ self.addEventListener('activate', e => {
 
 
 //Cuando el navegador recupera una url
-self.addEventListener('fetch', e => {
-    //Responder ya sea con el objeto en caché o continuar y buscar la url real
-    e.respondWith(
-        caches.match(e.request)
-            .then(res => {
-                if (res) {
-                    return res
-                }
+// self.addEventListener('fetch', e => {
+//     //Responder ya sea con el objeto en caché o continuar y buscar la url real
+//     e.respondWith(
+//         caches.match(e.request)
+//             .then(res => {
+//                 if (res) {
+//                     return res
+//                 }
 
-                return fetch(e.request)
-            })
-    )
-})
+//                 return fetch(e.request)
+//             })
+//     )
+// })
